@@ -1,0 +1,41 @@
+@charset "UTF-8";
+table, th, td{
+	border: 2px solid #D4E0EE;
+	border-collapse: collapse;
+	color: #555;
+}
+
+hr{
+	color: #555;
+}
+
+th, td{
+	padding: 3px;
+}
+
+td a:link, td a:visited{
+	color: #718ABE;
+	text-decoration: none;
+}
+
+a:link, a:visited{
+	color: #718ABE;
+	text-decoration: none;
+}
+
+td a:hover{
+	text-decoration: underline;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+table th{
+	background-color: #E6EDF5;
+	color: #4F76A3;
+}
+
+table.list tr:nth-child(odd) {
+	background-color: #F7F9FC;
+}
