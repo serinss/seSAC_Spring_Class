@@ -19,24 +19,25 @@ public class MemberController {
 	MemberService mService;
 	
 	@RequestMapping("/member/joinForm.do")
-	public String boardWriteForm(Model model) {
+	public String joinForm(Model model) {
 		//model.addAttribute("userVO", model);
 		return "member/joinForm";
 	}
 	
 	@RequestMapping(value="login.do", method = RequestMethod.POST)
-	public String boardWrite(MemberVO member, RedirectAttributes attr) {
+	public String join(MemberVO member, RedirectAttributes attr) {
 		
 		int result = mService.insertMember(member);
 		attr.addFlashAttribute("msg", result>0?"회원가입 완료":"회원가입 실패");
 		return "redirect:/board/list.do";
 	}
 	
-	
 	@RequestMapping("/member/list")
 	public String memberlist(Model model) {
 		model.addAttribute("memberList", mService.selectAllMember());
 		return "member/memberList";
 	}
+	
+	
 	
 }

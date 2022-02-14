@@ -6,19 +6,32 @@
 <mapper namespace="com.sesac.member">
 
   <select id="selectAllMember" resultType="memberVO">
-    select id, name, email_id || '@' || email_domain as email
-	, tel1 || '-' || tel2 || '-' || tel3 as tel
-	, post, basic_addr || detail_addr as addr, type, to_char(reg_date, 'yyyy-mm-dd') as reg_date
-	from tbl_member
-	order by reg_date desc
+  	select * from tbl_member
   </select>
   
-  <select id="insertMember" parameterType="memberVO">
-  	insert into tbl_member(id, name, password, email_id, email_domain, 
-		tel1, tel2, tel3, post, basic_addr, detail_addr)
-	values(#{id}, #{name}, #{password}, #{emailId}, #{emailDo}, 
-			#{telA}, #{telB}, #{telC}, #{post}, #{basicAddr}, #{detailAddr})
+  <select id="selectById" parameterType="string" resultType="memberVO">
+  	select * from tbl_member
+  	where id = #{aa}
   </select>
   
+  <insert id="insertMember" parameterType="memberVO">
+  	insert into tbl_member
+	values(#{id}, #{name}, #{password}, #{email_id}, #{email_domain}, 
+			#{tel1}, #{tel2}, #{tel3}, #{post}, #{basic_addr}, #{detail_addr}, #{type}, sysdate)
+  </insert>
+  
+  <update id="update" parameterType="memberVO">
+  	update tbl_member
+  	set name=#{name}, password=#{password}, email_id=#{email_id}, email_domain=#{email_domain}, 
+			tel1=#{tel1}, tel2=#{tel2}, tel3=#{tel3}, post=#{post}, 
+			basic_addr=#{basic_addr}, detail_addr=#{detail_addr}, 
+			type=#{type}
+	where id=#{id}
+  </update>
+  
+  <delete id="delete" parameterType="string">
+  	delete from tbl_member
+  	where id=#{id}
+  </delete>
   
 </mapper>

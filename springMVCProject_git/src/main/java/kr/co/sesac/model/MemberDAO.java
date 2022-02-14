@@ -51,8 +51,8 @@ public class MemberDAO {
 	     		String type = rs.getString("type");
 	     		String regDate = rs.getString("reg_date");
 	     		
-	     		MemberVO member = new MemberVO(id, name, email, tel, post, addr, type, regDate);
-	     		list.add(member);
+	     		//MemberVO member = new MemberVO(id, name, email, tel, post, addr, type, regDate);
+	     		//list.add(member);
 	         }
 	      } catch (Exception e) {
 	         e.printStackTrace();
@@ -81,14 +81,14 @@ public class MemberDAO {
 	    		pstmt.setString(1, member.getId());
 	    		pstmt.setString(2, member.getName());
 	    		pstmt.setString(3, member.getPassword());
-	    		pstmt.setString(4, member.getEmailId());
-	    		pstmt.setString(5, member.getEmailDo());
-	    		pstmt.setString(6, member.getTelA());
-	    		pstmt.setString(7, member.getTelB());
-	    		pstmt.setString(8, member.getTelC());
-	    		pstmt.setString(9, member.getPost());
-	    		pstmt.setString(10, member.getBasicAddr());
-	    		pstmt.setString(11, member.getDetailAddr());
+//	    		pstmt.setString(4, member.getEmailId());
+//	    		pstmt.setString(5, member.getEmailDo());
+//	    		pstmt.setString(6, member.getTelA());
+//	    		pstmt.setString(7, member.getTelB());
+//	    		pstmt.setString(8, member.getTelC());
+//	    		pstmt.setString(9, member.getPost());
+//	    		pstmt.setString(10, member.getBasicAddr());
+//	    		pstmt.setString(11, member.getDetailAddr());
 	    		
 	    		result = pstmt.executeUpdate();
 	    		

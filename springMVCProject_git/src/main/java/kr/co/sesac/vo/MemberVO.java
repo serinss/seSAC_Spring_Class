@@ -1,159 +1,23 @@
 package kr.co.sesac.vo;
 
+import java.sql.Date;
+
 public class MemberVO {
 	private String id;
 	private String name;
 	private String password;
-	private String email;
-	private String emailId;
-	private String emailDo;
-	private String tel;
-	private String telA;
-	private String telB;
-	private String telC;
+	private String email_id;
+	private String email_domain;
+	private String tel1;
+	private String tel2;
+	private String tel3;
 	private String post;
-	private String addr;
-	private String basicAddr;
-	private String detailAddr;
+	private String basic_addr;
+	private String detail_addr;
 	private String type;
-	private String regDate;
+	private Date reg_date;
+	//컬럼 개수가 많은 경우, 생성자 필요 없음 -> 굳이 우리가 만들거 아니기 때문에
 	
-	
-	public MemberVO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-
-	public MemberVO(String id, String name, String email, String tel, String post, String addr, String type,
-			String regDate) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.tel = tel;
-		this.post = post;
-		this.addr = addr;
-		this.type = type;
-		this.regDate = regDate;
-	}
-
-	public MemberVO(String id, String name, String password, String email, String emailId, String emailDo, String tel,
-			String telA, String telB, String telC, String post, String addr, String basicAddr, String detailAddr,
-			String type, String regDate) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.password = password;
-		this.email = email;
-		this.emailId = emailId;
-		this.emailDo = emailDo;
-		this.tel = tel;
-		this.telA = telA;
-		this.telB = telB;
-		this.telC = telC;
-		this.post = post;
-		this.addr = addr;
-		this.basicAddr = basicAddr;
-		this.detailAddr = detailAddr;
-		this.type = type;
-		this.regDate = regDate;
-	}
-
-
-
-
-
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getEmailId() {
-		return emailId;
-	}
-
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-
-	public String getEmailDo() {
-		return emailDo;
-	}
-
-
-
-	public void setEmailDo(String emailDo) {
-		this.emailDo = emailDo;
-	}
-
-
-
-	public String getTelA() {
-		return telA;
-	}
-
-
-
-	public void setTelA(String telA) {
-		this.telA = telA;
-	}
-
-
-
-	public String getTelB() {
-		return telB;
-	}
-
-
-
-	public void setTelB(String telB) {
-		this.telB = telB;
-	}
-
-
-
-	public String getTelC() {
-		return telC;
-	}
-
-
-
-	public void setTelC(String telC) {
-		this.telC = telC;
-	}
-
-
-
-	public String getBasicAddr() {
-		return basicAddr;
-	}
-
-
-
-	public void setBasicAddr(String basicAddr) {
-		this.basicAddr = basicAddr;
-	}
-
-
-
-	public String getDetailAddr() {
-		return detailAddr;
-	}
-
-
-
-	public void setDetailAddr(String detailAddr) {
-		this.detailAddr = detailAddr;
-	}
-
-
-
 	public String getId() {
 		return id;
 	}
@@ -166,21 +30,41 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	
-	public String getTel() {
-		return tel;
+	public String getEmail_id() {
+		return email_id;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setEmail_id(String email_id) {
+		this.email_id = email_id;
+	}
+	public String getEmail_domain() {
+		return email_domain;
+	}
+	public void setEmail_domain(String email_domain) {
+		this.email_domain = email_domain;
+	}
+	public String getTel1() {
+		return tel1;
+	}
+	public void setTel1(String tel1) {
+		this.tel1 = tel1;
+	}
+	public String getTel2() {
+		return tel2;
+	}
+	public void setTel2(String tel2) {
+		this.tel2 = tel2;
+	}
+	public String getTel3() {
+		return tel3;
+	}
+	public void setTel3(String tel3) {
+		this.tel3 = tel3;
 	}
 	public String getPost() {
 		return post;
@@ -188,11 +72,17 @@ public class MemberVO {
 	public void setPost(String post) {
 		this.post = post;
 	}
-	public String getAddr() {
-		return addr;
+	public String getBasic_addr() {
+		return basic_addr;
 	}
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setBasic_addr(String basic_addr) {
+		this.basic_addr = basic_addr;
+	}
+	public String getDetail_addr() {
+		return detail_addr;
+	}
+	public void setDetail_addr(String detail_addr) {
+		this.detail_addr = detail_addr;
 	}
 	public String getType() {
 		return type;
@@ -200,12 +90,21 @@ public class MemberVO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getRegDate() {
-		return regDate;
+	public Date getReg_date() {
+		return reg_date;
 	}
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
 	}
+	@Override
+	public String toString() {
+		return "MemberVO [id=" + id + ", name=" + name + ", password=" + password + ", email_id=" + email_id
+				+ ", email_domain=" + email_domain + ", tel1=" + tel1 + ", tel2=" + tel2 + ", tel3=" + tel3 + ", post="
+				+ post + ", basic_addr=" + basic_addr + ", detail_addr=" + detail_addr + ", type=" + type
+				+ ", reg_date=" + reg_date + "]";
+	}
+	
+	
 	
 	
 }
