@@ -40,7 +40,7 @@ hr, table {
 
 			<c:forEach items="${ memberList }" var="member">
 				<tr>
-					<td>${ member.id }</td>
+					<td><a href="detail?id=${ member.id }">${ member.id }</a></td>
 					<td style="text-align: center;">${ member.name }</td>
 					<td>
 						${ member.email_id }

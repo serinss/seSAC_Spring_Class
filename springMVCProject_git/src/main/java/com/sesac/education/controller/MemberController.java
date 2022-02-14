@@ -33,11 +33,16 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/member/list")
-	public String memberlist(Model model) {
+	public String memberList(Model model) {
 		model.addAttribute("memberList", mService.selectAllMember());
 		return "member/memberList";
 	}
 	
+	@GetMapping("/member/detail")
+	public String memberDetail(String mid, Model model) {
+		model.addAttribute("member", mService.selectById(mid));
+		return "member/detailMember";
+	}
 	
 	
 }
