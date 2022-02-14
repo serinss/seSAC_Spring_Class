@@ -5,13 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<!-- 방법3. apache제공 JNDI 이용 Connection Pooling - DB에 Context.xml 설정
-		 jndi-name -> context.xml에 resource로 등록한다
-		 단점 - 서버를 지우면 모두 날라간다..(매번 넣어주기 해야함) -->
-	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/myoracle"   resource-ref="true" />
-	
-	
-	
+
 	<!-- 방법1. new org.springframework.beans.factory.config.PropertyPlaceholderConfigurer() 와 동일한 의미 -->
 <!-- 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="/WEB-INF/spring/appServlet/oracleDBInfo.properties"/>
@@ -37,6 +31,26 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean> -->
+	
+	
+	<!-- 방법3. apache제공 JNDI 이용 Connection Pooling - DB에 Context.xml 설정
+	 jndi-name -> context.xml에 resource로 등록한다
+	 단점 - 서버를 지우면 모두 날라간다..(매번 넣어주기 해야함) -->
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/myoracle"   resource-ref="true" />
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" />
+		<property name="mapperLocations" value="classpath:mybatis/mappers/*Mapper.xml" />
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+	
+	
+	
+	
 	
 	
 	
