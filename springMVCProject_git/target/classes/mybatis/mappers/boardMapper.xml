@@ -53,7 +53,7 @@
 		values(seq_tbl_board_file_no.nextval, #{boardNo}, #{fileOriName}, #{fileSaveName}, #{fileSize})
 	</select>
 	
-	<select id="selectFileByNo" parameterType="int" resultType="BoardFileVO">
+	<select id="selectFileByNo" parameterType="int" resultType="boardFileVO">
 		select no, file_ori_name, file_save_name, file_size
 		from tbl_board_file where board_no = #{no}
 	</select>

@@ -29,6 +29,7 @@
   	<typeAlias type="kr.co.sesac.vo.BoardVO" alias="boardVO" />
   	<typeAlias type="kr.co.sesac.vo.LoginVO" alias="loginVO"/>
   	<typeAlias type="kr.co.sesac.vo.MemberVO" alias="memberVO"/>
+  	<typeAlias type="kr.co.sesac.vo.BoardFileVO" alias="boardFileVO"/>
   </typeAliases>
   
 </configuration>
