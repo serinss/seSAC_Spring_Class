@@ -5,13 +5,27 @@
 <!-- namespace는 충돌을 줄이기 위해 url로 설정하는 것을 가장 권장
 	 -> selectAll 이름이 동일해도 com.sesac.member 의 selectAll을 수행하면 된다 -->
 <mapper namespace="com.sesac.board">
+	
+	<!-- DB컬럼명과 VO컬럼명이 다른 경우 resultMap을 이용해서 설정해줄 수 있다
+		 기존 컬럼명 = column , 새롭게 넣을 명 = property
+		 -> 이 설정을 사용하면 as로 따로따로 안 넣어줘도 괜찮음 
+		 
+		 대신, resultType="boardMap" 으로 설정 필요-->
+	<resultMap type="boardVO" id="boardMap">
+		<result column="no" property="no"/>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="view_cnt" property="viewCnt"/>
+	</resultMap>
+	
 
-
-	<select id="selectAll" resultType="kr.co.sesac.vo.BoardVO"> <!-- boardVO도 가능하다 -> sqlMapConfig에서 설정함 -->
+	<select id="selectAll" resultType="boardMap"> <!-- boardVO도 가능하다 -> sqlMapConfig에서 설정함 -->
     select no, title, writer, to_char(reg_date, 'yyyy-mm-dd') as reg_date, view_cnt
 		from tbl_board order by no desc
 	</select>
-  	<!-- 더이상 StringBuilder, executeQuery, ResultSet 하지 않아도 된다 -->
+  	<!-- 더이상 StringBuilder, executeQuery, ResultSet 하지 않아도 된다 
+  		 단, 현재 DB컬럼명 != VO 변수명 이므로 바로 매핑되어 나오지 않을 수 있음 -> as로 이름 맞춰주기-->
 	
 	<select id="selectBoardNo" resultType="int">
 		select seq_tbl_board_no.nextval from dual

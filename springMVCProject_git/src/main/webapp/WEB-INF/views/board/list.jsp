@@ -50,6 +50,7 @@
       <h2>게시판 목록		<span>${ msg }</span></h2>
       <hr>
       <br>
+      <span>전체 게시글 수 : ${boardCnt }</span><!-- 안뜸.. 다른 프로젝트 list.jsp 호출되는듯 -->
       <table border = "1" class="list">
          <tr>
             <th width="7%">번호</th>

@@ -30,6 +30,7 @@ public class BoardController {
 		}
 		
 		model.addAttribute("list", bService.selectAllBoard());
+		model.addAttribute("boardCnt", bService.boardCnt());
 		return "board/list";
 	}
 	
