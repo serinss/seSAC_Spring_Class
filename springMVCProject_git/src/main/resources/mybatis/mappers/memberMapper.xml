@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace는 충돌을 줄이기 위해 url로 설정하는 것을 가장 권장 -->
+<mapper namespace="com.sesac.member">
+
+  <select id="selectAllMember" resultType="memberVO">
+    select id, name, email_id || '@' || email_domain as email
+	, tel1 || '-' || tel2 || '-' || tel3 as tel
+	, post, basic_addr || detail_addr as addr, type, to_char(reg_date, 'yyyy-mm-dd') as reg_date
+	from tbl_member
+	order by reg_date desc
+  </select>
+  
+  <select id="insertMember" parameterType="memberVO">
+  	insert into tbl_member(id, name, password, email_id, email_domain, 
+		tel1, tel2, tel3, post, basic_addr, detail_addr)
+	values(#{id}, #{name}, #{password}, #{emailId}, #{emailDo}, 
+			#{telA}, #{telB}, #{telC}, #{post}, #{basicAddr}, #{detailAddr})
+  </select>
+  
+  
+</mapper>
