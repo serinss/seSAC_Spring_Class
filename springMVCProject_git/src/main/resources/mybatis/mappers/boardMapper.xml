@@ -19,10 +19,20 @@
 		<result column="view_cnt" property="viewCnt"/>
 	</resultMap>
 	
-
-	<select id="selectAll" resultType="boardMap"> <!-- boardVO도 가능하다 -> sqlMapConfig에서 설정함 -->
-    select no, title, writer, to_char(reg_date, 'yyyy-mm-dd') as reg_date, view_cnt
-		from tbl_board order by no desc
+	<!-- where절이 조건에 따라 들어가는 동적sql을 사용 -->
+	<select id="selectAll" parameterType="map" resultType="boardMap"> <!-- boardVO도 가능하다 -> sqlMapConfig에서 설정함 -->
+    	select no, title, writer, to_char(reg_date, 'yyyy-mm-dd') as reg_date, view_cnt
+		from tbl_board 
+		<where>
+			<!-- column명이 ${} 가변이 안될 경우 조건을 두개 주면 됨 -->
+			<if test="keyword=='title'">
+				title like #{contents}
+			</if>
+			<if test="keyword=='writer'">
+				writer like #{contents}
+			</if>
+		</where>
+		order by no desc
 	</select>
   	<!-- 더이상 StringBuilder, executeQuery, ResultSet 하지 않아도 된다 
   		 단, 현재 DB컬럼명 != VO 변수명 이므로 바로 매핑되어 나오지 않을 수 있음 -> as로 이름 맞춰주기-->

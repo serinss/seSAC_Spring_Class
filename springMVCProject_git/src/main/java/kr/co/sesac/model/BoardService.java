@@ -18,8 +18,8 @@ public class BoardService {
 	//BoardDAO dao; //기존은 JDBC를 직접 이용한 DAO
 	
  
-	public List<BoardVO> selectAllBoard() {
-		 return dao.selectAllBoard();
+	public List<BoardVO> selectAllBoard(String keyword, String contents) {
+		 return dao.selectAllBoard(keyword, contents);
 	}
  
 	public int selectBoardNo() {

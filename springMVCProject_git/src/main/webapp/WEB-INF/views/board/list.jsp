@@ -25,9 +25,20 @@
     			  		"contents":$("contents").val()
     		};
     	  console.log(mydata); //object 안에 들어온다
-    	  alert($("keyword").val());
+    	  alert(mydata.keyword + "****" + $("keyword").val());
+    	  
+    	  //서버에 다녀오기(화면 이동 없이 현재 자리로 돌아온다)
+    	  //list.do?keyword=title&contents=aa 방법은 권장하지 않는다 -> json형태로 만들기
+    	  $.ajax({
+    		  url:"list.do",
+    		  data:mydata,
+    		  success:function(responseData){
+    			  alert("다녀옴" + responseData); //responseData = jsp 페이지
+    			  $("#here").html(responseData);
+    		  }
+    	  });
+    	  
       });
-      
       
    })
    
@@ -60,6 +71,7 @@
       <div align="center">
       <hr>
       <h2>게시판 목록		<span>${ msg }</span></h2>
+      <hr>
       <!-- 검색 기능 추가 해보기 -->
       조건 : 
       <select id="keyword">
@@ -72,30 +84,32 @@
       <hr>
       <br>
       <span>전체 게시글 수 : ${boardCnt }</span>
-      <table border = "1" class="list">
-         <tr>
-            <th width="7%">번호</th>
-            <th>제목</th>
-            <th width = "16%">글쓴이</th>
-            <th width = "10%">조회수</th>
-            <th width = "20%">등록일</th>
-         </tr>
-       
-      <c:forEach items="${ list }" var="board" varStatus="bstatus">
-       <tr>
-          <td>${ 10-bstatus.count }</td> <!-- DB의 시퀀스를 보여주는게 아닌 사용자에게 보여줄 번호를 부여 -->
-          <td>
-             <a href="javascript:doAction(${ board.no })">
-                <c:out value="${ board.title }" />
-             </a>
-             
-          </td>
-          <td>${ board.writer }</td>
-          <td>${ board.viewCnt }</td>
-          <td>${ board.regDate }</td>
-       </tr>
-      </c:forEach>
-      </table>
+      <div id="here"> <!-- 기존 리스트는 지우고 검색된 리스트만 넣기 위해 한번 감싼다 -->
+	      <table border = "1" class="list">
+	         <tr>
+	            <th width="7%">번호</th>
+	            <th>제목</th>
+	            <th width = "16%">글쓴이</th>
+	            <th width = "10%">조회수</th>
+	            <th width = "20%">등록일</th>
+	         </tr>
+	       
+	      <c:forEach items="${ list }" var="board" varStatus="bstatus">
+	       <tr>
+	          <td>${ 10-bstatus.count }</td> <!-- DB의 시퀀스를 보여주는게 아닌 사용자에게 보여줄 번호를 부여 -->
+	          <td>
+	             <a href="javascript:doAction(${ board.no })">
+	                <c:out value="${ board.title }" />
+	             </a>
+	             
+	          </td>
+	          <td>${ board.writer }</td>
+	          <td>${ board.viewCnt }</td>
+	          <td>${ board.regDate }</td>
+	       </tr>
+	      </c:forEach>
+	      </table>
+      </div>
       <br>
       <%-- <c:if test="${ not empty userVO }"> --%>
       	<button id="insertBtn">새글등록</button>

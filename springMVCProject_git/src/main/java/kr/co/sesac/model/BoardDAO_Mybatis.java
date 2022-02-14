@@ -2,7 +2,9 @@ package kr.co.sesac.model;
 
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +23,14 @@ public class BoardDAO_Mybatis {
 	final String namespace = "com.sesac.board.";
 	//namespace는 변경이 가능하므로 따로 빼주는 것을 권장 (무조건 유지보수 편하게)
 	
-	public List<BoardVO> selectAllBoard(){
+	public List<BoardVO> selectAllBoard(String keyword, String contents){
+		
+		Map<String, String> mymap = new HashMap<String, String>();
+		mymap.put("keyword", keyword);
+		mymap.put("contents", "%"+contents+"%");
+		
 		//select를 여러번 해서 자동으로 List를 만든다
-		return session.selectList(namespace + "selectAll");
+		return session.selectList(namespace + "selectAll", mymap); //파라미터는 하나밖에 전달을 못함 -> Map으로 묶자
 		
 //		List<BoardVO> blist = session.selectList(namespace + "selectAll");
 //		blist.forEach(b->{syso(b);});
