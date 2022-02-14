@@ -16,7 +16,7 @@ import kr.co.sesac.vo.MemberVO;
 @Repository //@Component + DB사용
 public class MemberDAO {
 	
-	@Autowired //type이 같으면 Injection
+	@Autowired //생성하겠다고 설정한 type이 같으면 Injection주입
 	DataSource dataSource; //action-dbSource.xml 에 선언한 대로 타입이 같으면 생성
 	
 	private Connection conn = null;

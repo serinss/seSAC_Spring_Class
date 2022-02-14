@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<!-- 방법3. apache제공 JNDI 이용 Connection Pooling - DB에 Context.xml 설정
+		 jndi-name -> context.xml에 resource로 등록한다
+		 단점 - 서버를 지우면 모두 날라간다..(매번 넣어주기 해야함) -->
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/myoracle"   resource-ref="true" />
+	
+	
+	
+	<!-- 방법1. new org.springframework.beans.factory.config.PropertyPlaceholderConfigurer() 와 동일한 의미 -->
+<!-- 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="/WEB-INF/spring/appServlet/oracleDBInfo.properties"/>
         <property name="fileEncoding" value="UTF-8" />
 	 </bean>
 	
+	DataSource dataSource = new org.springframework.jdbc.datasource.DriverManagerDataSource()
+		DataSource(Interface) 타입의 객체를 생성하겠다 설정
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -15,6 +27,19 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
+	
+	방법2. apache제공 Connection Pooling 
+		 위의 방법은 요청 시마다 Connection을 만든다.
+		 해당 방법이  DB과부하를 줄일 수 있는 방법! - BasicDataSource 사용
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean> -->
+	
+	
+	
 
 
 </beans>

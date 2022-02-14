@@ -14,8 +14,8 @@ import kr.co.sesac.vo.LoginVO;
 
 public class LoginDAO {
 //MemberDAO와 나중에 합치기
-	
-	@Autowired
+	 
+	@Autowired //생성하겠다고 설정한 type이 같으면 Injection주입
 	DataSource ds;
 	
 	

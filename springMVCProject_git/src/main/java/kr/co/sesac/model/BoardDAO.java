@@ -20,8 +20,8 @@ import kr.co.sesac.vo.BoardVO;
 @Repository 
 public class BoardDAO {
 	
-	@Autowired
-	DataSource ds;
+	@Autowired //생성하겠다고 설정한 type이 같으면 Injection주입
+	DataSource ds; //인터페이스 DataSource
  
 	public List<BoardVO> selectAllBoard() {
 		
