@@ -14,7 +14,9 @@ import kr.co.sesac.vo.BoardVO;
 public class BoardService {
 	
 	@Autowired
-	BoardDAO dao;
+	BoardDAO_Mybatis dao; //Mybatis를 이용한 DAO연결
+	//BoardDAO dao; //기존은 JDBC를 직접 이용한 DAO
+	
  
 	public List<BoardVO> selectAllBoard() {
 		 return dao.selectAllBoard();
