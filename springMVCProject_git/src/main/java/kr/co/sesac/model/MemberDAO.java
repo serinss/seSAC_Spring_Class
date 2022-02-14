@@ -6,14 +6,19 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.sesac.util.ConnectionFactory;
-import kr.co.sesac.util.JDBCClose;
 import kr.co.sesac.vo.MemberVO;
 
-@Repository
+@Repository //@Component + DB사용
 public class MemberDAO {
+	
+	@Autowired //type이 같으면 Injection
+	DataSource dataSource; //action-dbSource.xml 에 선언한 대로 타입이 같으면 생성
+	
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 
@@ -25,7 +30,7 @@ public class MemberDAO {
 	      List<MemberVO> list = new ArrayList<>();
 
 	      try {
-	         conn = new ConnectionFactory().getConnection();
+	         conn = dataSource.getConnection();
 	         StringBuilder sql = new StringBuilder();
 	         sql.append("select id, name, email_id || '@' || email_domain as email ");
 	         sql.append(" , tel1 || '-' || tel2 || '-' || tel3 as tel ");
@@ -52,7 +57,7 @@ public class MemberDAO {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      } finally {
-	         JDBCClose.close(pstmt, conn);
+	         
 	      }
 	      return list;
 	   }
@@ -66,7 +71,7 @@ public class MemberDAO {
 		   int result=0;
 	      try {
 
-	    	  Connection conn = new ConnectionFactory().getConnection();
+	    	  Connection conn = dataSource.getConnection();
 	    		StringBuilder sql = new StringBuilder();
 	    		sql.append("insert into tbl_member(id, name, password, email_id, email_domain, "
 	    				+ "tel1, tel2, tel3, post, basic_addr, detail_addr) ");
@@ -90,7 +95,7 @@ public class MemberDAO {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      } finally {
-	         JDBCClose.close(pstmt, conn);
+	      
 	      }
 	      return result;
 	   }
