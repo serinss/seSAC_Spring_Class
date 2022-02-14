@@ -1,7 +1,6 @@
-<%@page import="kr.co.mlec.member.vo.MemberVO"%>
-<%@page import="kr.co.mlec.member.dao.MemberDAO"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="kr.co.mlec.util.ConnectionFactory"%>
+
+<%@page import="kr.co.sesac.model.MemberDAO"%>
+<%@page import="kr.co.sesac.vo.MemberVO"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -30,8 +29,8 @@
 	member.setTelB(telB);
 	member.setTelC(telC);
 	member.setPost(post);
-	member.setbAddr(bAddr);
-	member.setdAddr(dAddr);
+	//member.setbAddr(bAddr);
+	//member.setdAddr(dAddr);
 	
 	MemberDAO dao = new MemberDAO();
 	dao.insertMember(member);

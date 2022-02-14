@@ -1,4 +1,4 @@
-
+<%@page import="kr.co.sesac.model.MemberDAO"%>
 <%@page import="kr.co.sesac.vo.MemberVO"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -33,8 +33,8 @@
 	member.setBasicAddr(basicAddr);
 	member.setDetailAddr(detailAddr);
 	
-	MemberDAO dao = new MemberDAO();
-	dao.insertMember(member);
+	//MemberDAO dao = new MemberDAO();
+	//dao.insertMember(member);
 	
 	
 	

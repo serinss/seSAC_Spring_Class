@@ -1,3 +1,5 @@
+<%@page import="kr.co.sesac.model.LoginDAO"%>
+<%@page import="kr.co.sesac.vo.LoginVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%

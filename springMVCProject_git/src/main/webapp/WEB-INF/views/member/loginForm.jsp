@@ -47,7 +47,7 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="/jsp/include/topMenu.jsp" />
+		<%-- <jsp:include page="/jsp/include/topMenu.jsp" /> --%>
 	</header>
 	<section>
 		<div align="center">
@@ -71,7 +71,7 @@
 		</div>
 	</section>
 	<footer>
-		<%@ include file="/jsp/include/footer.jsp" %>
+		<%-- <%@ include file="/jsp/include/footer.jsp" %> --%>
 	</footer>
 
 </body>
