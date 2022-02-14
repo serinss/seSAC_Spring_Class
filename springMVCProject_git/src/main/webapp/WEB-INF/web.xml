@@ -18,10 +18,17 @@
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+			<!-- 여러 파라미터 경로 설정 가능(스프링이 배열로 받는다) -> 목적에 맞게 나눠놓을 예정
+				db전용 xml 경로 추가함 -->
+			<param-value>
+				/WEB-INF/spring/appServlet/servlet-context.xml
+				/WEB-INF/spring/appServlet/action-dataSource.xml
+			</param-value>
 		</init-param>
+		
 		<!-- Exception 처리 param추가 -->
 		<init-param>
 			<param-name>throwExceptionIfNoHandlerFound</param-name>
