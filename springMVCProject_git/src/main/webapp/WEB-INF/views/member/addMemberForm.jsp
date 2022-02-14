@@ -21,36 +21,36 @@ table {
 			<table border="1">
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" name="id" value="${member.id }"></td>
+					<td><input type="text" name="id"></td>
 				</tr>
 				<tr>
 					<th>이름</th>
-					<td><input type="text" name="name" value="${member.name }"></td>
+					<td><input type="text" name="name"></td>
 				</tr>
 				<tr>
 					<th width="100px">패스워드</th>
-					<td><input type="password" name="password" value="${member.password }"></td>
+					<td><input type="password" name="password"></td>
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="text" name="email_id" value="${member.email_id }">&nbsp;@ <input
-						type="text" name="email_domain" value="${member.email_domain }" style="width: 30%"></td>
+					<td><input type="text" name="email_id">&nbsp;@ <input
+						type="text" name="email_domain" style="width: 30%"></td>
 				</tr>
 				<tr>
 					<th>연락처</th>
-					<td><input type="text" name="tel1" value="${member.tel1 }"
-						style="width: 10%">&nbsp;- <input type="text" name="tel2"  value="${member.tel2 }"
+					<td><input type="text" name="tel1" placeholder="000"
+						style="width: 10%">&nbsp;- <input type="text" name="tel2" placeholder="0000"
 						style="width: 15%">&nbsp;- <input
-						type="text" name="tel3"  value="${member.tel3 }" style="width: 15%"></td>
+						type="text" name="tel3" placeholder="0000" style="width: 15%"></td>
 				</tr>
 				<tr>
 					<th>우편번호</th>
-					<td><input type="text" name="post" value="${member.post }"></td>
+					<td><input type="text" name="post"></td>
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td><input type="text" name="basic_addr"  value="${member.basic_addr }" placeholder="주소"
-						style="width: 50%"> <input type="text" name="detail_addr" value="${member.detail_addr }"
+					<td><input type="text" name="basic_addr" placeholder="주소"
+						style="width: 50%"> <input type="text" name="detail_addr"
 						placeholder="상세 주소"></td>
 				</tr>
 			</table>

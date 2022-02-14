@@ -32,6 +32,8 @@ public class MemberController {
 		return "redirect:/board/list.do";
 	}
 	
+	
+	
 	@RequestMapping("/member/list")
 	public String memberList(Model model) {
 		model.addAttribute("memberList", mService.selectAllMember());
@@ -43,6 +45,19 @@ public class MemberController {
 		model.addAttribute("member", mService.selectById(mid));
 		return "member/detailMember";
 	}
+	
+	@GetMapping("/member/update")
+	public String memberUpdate(MemberVO member, Model model) {
+		mService.update(member);
+		return "redirect:/member/list";
+	}
+	
+	@GetMapping("/member/insert")
+	public String memberInsert(MemberVO member, Model model) {
+		mService.insertMember(member);
+		return "redirect:/member/list";
+	}
+	
 	
 	
 }
