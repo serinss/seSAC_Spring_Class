@@ -14,9 +14,21 @@
 <script type="text/javascript">
    
    $(document).ready(function() {
-      $('button').click(function() {
+      $('#insertBtn').click(function() {
          location.href = "${pageContext.request.contextPath}/board/writeForm.do"
       })
+      
+      //위는 콜백함수 이용
+      //아래는 on함수 이용
+      $('#searchBtn').on("click", function(){
+    	  var mydata = {"keyword":$("keyword").val(),
+    			  		"contents":$("contents").val()
+    		};
+    	  console.log(mydata); //object 안에 들어온다
+    	  alert($("keyword").val());
+      });
+      
+      
    })
    
    function doAction(boardNo){
@@ -48,9 +60,18 @@
       <div align="center">
       <hr>
       <h2>게시판 목록		<span>${ msg }</span></h2>
+      <!-- 검색 기능 추가 해보기 -->
+      조건 : 
+      <select id="keyword">
+      	<option value="title">제목</option>
+      	<option value="writer">글쓴이</option>
+      </select>
+      <input type="text" id="contents" placeholder="검색어를 입력하세요">
+      <button id="searchBtn">검색</button>
+     
       <hr>
       <br>
-      <span>전체 게시글 수 : ${boardCnt }</span><!-- 안뜸.. 다른 프로젝트 list.jsp 호출되는듯 -->
+      <span>전체 게시글 수 : ${boardCnt }</span>
       <table border = "1" class="list">
          <tr>
             <th width="7%">번호</th>
@@ -60,9 +81,9 @@
             <th width = "20%">등록일</th>
          </tr>
        
-      <c:forEach items="${ list }" var="board">
+      <c:forEach items="${ list }" var="board" varStatus="bstatus">
        <tr>
-          <td>${ board.no }</td>
+          <td>${ 10-bstatus.count }</td> <!-- DB의 시퀀스를 보여주는게 아닌 사용자에게 보여줄 번호를 부여 -->
           <td>
              <a href="javascript:doAction(${ board.no })">
                 <c:out value="${ board.title }" />
@@ -77,7 +98,7 @@
       </table>
       <br>
       <%-- <c:if test="${ not empty userVO }"> --%>
-      	<button>새글등록</button>
+      	<button id="insertBtn">새글등록</button>
       <%-- </c:if> --%>
    </div>   
    </section>    
