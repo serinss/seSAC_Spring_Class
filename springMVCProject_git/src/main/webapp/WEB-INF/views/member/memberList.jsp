@@ -42,12 +42,22 @@ hr, table {
 				<tr>
 					<td>${ member.id }</td>
 					<td style="text-align: center;">${ member.name }</td>
-					<td>${ member.email }</td>
-					<td style="text-align: center;">${ member.tel }</td>
+					<td>
+						${ member.email_id }
+						${ member.email_domain }
+					</td>
+					<td style="text-align: center;">
+						${ member.tel1 }
+						${ member.tel2 }
+						${ member.tel3 }
+					</td>
 					<td style="text-align: center;">${ member.post }</td>
-					<td>${ member.addr }</td>
+					<td>
+						${ member.basic_addr }
+						${ member.detail_addr }
+					</td>
 					<td style="text-align: center;">${ member.type }</td>
-					<td style="text-align: center;">${ member.regDate }</td>
+					<td style="text-align: center;">${ member.reg_date }</td>
 				</tr>
 			</c:forEach>
 
